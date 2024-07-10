@@ -35,25 +35,26 @@ const Home: React.FC = () => {
   };
 
   return (
-<main className="flex flex-col items-center justify-between p-6 md:p-24 min-h-screen">
-{/*   <h1 className="text-xl md:text-3xl font-bold">SKR</h1> */}
-<Link href="https://www.stopkillerrobots.org/">
-    <Image src="/SKR_Logo_RGB_Yellow.webp" alt="SKR Logo" width={120} height={120} />
-</Link>
-  <div className="flex flex-col gap-5">
-    {socialMediaLinks.map((link) => (
-      <SocialMediaButton 
-      key={link.id} 
-      {...link}
-      />
-    ))}
-  </div>
-  <Link
-    href="https://www.stopkillerrobots.org/frequently-asked-questions/"
-    className="text-blue-500 underline hover:text-blue-700">
-    FAQ
-  </Link>
-</main>
+    <main className="flex flex-col items-center justify-between p-6 md:p-24 min-h-screen">
+      {/*   <h1 className="text-xl md:text-3xl font-bold">SKR</h1> */}
+      <Link href="https://www.stopkillerrobots.org/">
+        <Image src="/SKR_Logo_RGB_Yellow.webp" alt="SKR Logo" width={120} height={120} />
+      </Link>
+      <div className="flex flex-col gap-5">
+        {socialMediaLinks.map((link) => (
+          <SocialMediaButton 
+            key={link.id} 
+            {...link}
+          />
+        ))}
+      </div>
+      <Link
+        href="https://www.stopkillerrobots.org/frequently-asked-questions/"
+        className="text-blue-500 underline hover:text-blue-700"
+      >
+        FAQ
+      </Link>
+    </main>
   );
 };
 
