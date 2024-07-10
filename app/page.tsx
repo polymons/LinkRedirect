@@ -8,7 +8,7 @@ import firebaseService from './services/firebaseService';
 
 const socialMediaLinks = [
   { name: "Petition", url: "https://act.stopkillerrobots.org/stop-killer-robots-petition", id: "petition" },
-  { name: "Hungarian Activist Network facebook", url: "https://www.facebook.com/skrmagyarorszag/", id: "facebook" },
+  { name: "Hungarian Activist Network Facebook", url: "https://www.facebook.com/skrmagyarorszag/", id: "facebook" },
   { name: "Digital Dehumanisation", url: "https://www.stopkillerrobots.org/stop-killer-robots/digital-dehumanisation/", id: "digitexhibition" },
   // Add more links as needed
 ];
@@ -38,7 +38,7 @@ const Home: React.FC = () => {
     <main className="flex flex-col items-center justify-between p-6 md:p-24 min-h-screen">
       {/*   <h1 className="text-xl md:text-3xl font-bold">SKR</h1> */}
       <Link href="https://www.stopkillerrobots.org/">
-        <Image src="/SKR_Logo_RGB_Yellow.webp" alt="SKR Logo" width={120} height={120} />
+        <Image src="/skr512.png" alt="SKR Logo" width={120} height={120} loading="lazy"/>
       </Link>
       <div className="flex flex-col gap-5">
         {socialMediaLinks.map((link) => (
