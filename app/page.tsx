@@ -8,9 +8,9 @@ import Image from "next/image";
 
 
 const socialMediaLinks = [
-  { name: "Facebook", url: "https://facebook.com", id: "facebook" },
-  { name: "Twitter", url: "https://twitter.com", id: "twitter" },
-  { name: "Instagram", url: "https://instagram.com", id: "instagram" },
+  { name: "Petition", url: "https://act.stopkillerrobots.org/stop-killer-robots-petition", id: "petition" },
+  { name: "Hungarian Activist Network facebook", url: "https://www.facebook.com/skrmagyarorszag/", id: "facebook" },
+  { name: "Digital Dehumanisation", url: "https://www.stopkillerrobots.org/stop-killer-robots/digital-dehumanisation/", id: "digitexhibition" },
   // Add more links as needed
 ];
 
@@ -23,6 +23,13 @@ const Home: React.FC = () => {
           <SocialMediaButton key={link.id} {...link} />
         ))}
       </div>
+
+      <Link href="https://www.stopkillerrobots.org/">
+        <a className="text-blue-500 underline">International Campaign to Stop Killer Robots</a>
+      </Link>
+      <Link href="https://www.stopkillerrobots.org/frequently-asked-questions/">
+        <a className="text-blue-500 underline">FAQ</a>
+      </Link>
     </main>
   );
 };
