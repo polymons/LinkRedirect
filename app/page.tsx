@@ -67,6 +67,7 @@ const Home: React.FC = () => {
 		<main className="flex flex-col items-center justify-between p-6 md:p-24 min-h-screen gap-5 ">
 			{/*   <h1 className="text-xl md:text-3xl font-bold">SKR</h1> */}
 			<Link href="https://www.stopkillerrobots.org/">
+			{/* For some reason only the old img tag works with firebase hosting */}
 				<img
 					src="/skr512.png"
 					alt="SKR Logo"
