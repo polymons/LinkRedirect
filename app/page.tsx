@@ -1,11 +1,10 @@
 'use client';
-import React from "react";
-import { useEffect } from "react";
+import React, { useEffect } from 'react';
 import SocialMediaButton from "./components/SocialMediaButton";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-
+import firebaseService from './services/firebaseService';
 
 const socialMediaLinks = [
   { name: "Petition", url: "https://act.stopkillerrobots.org/stop-killer-robots-petition", id: "petition" },
@@ -15,6 +14,26 @@ const socialMediaLinks = [
 ];
 
 const Home: React.FC = () => {
+
+  useEffect(() => {
+    // Increment total site visits
+    firebaseService.incrementSiteVisits();
+  
+    // Handle unique visitor ID generation and increment unique site visits
+    if ( localStorage.getItem('uniqueVisitorId') === null) {
+      firebaseService.incrementUniqueSiteVisits(generateUniqueVisitorId());
+    }
+  }, []);
+  
+  const generateUniqueVisitorId = () => {
+    const id = 'xxxx-xxxx-4xxx-yxxx-xxxx'.replace(/[xy]/g, function(c) {
+      const r = (Math.random() * 16) | 0, v = c === 'x' ? r : (r & 0x3) | 0x8;
+      return v.toString(16);
+    });
+    localStorage.setItem('uniqueVisitorId', id);
+    return id;
+  };
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <h1 className="text-2xl font-bold">SKR</h1>
