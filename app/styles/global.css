@@ -75,7 +75,7 @@ button {
   color: yellow;
   padding: 10px 20px;
   border: 2px solid yellow;
-  border-radius: 20px;
+  border-radius: 15px;
   width: 100%;
 }
 .social-button:hover {
@@ -83,6 +83,12 @@ button {
   color: black;
   padding: 10px 20px;
   border: 2px solid black;
-  border-radius: 20px;
+  border-radius: 15px;
   width: 100%;
+}
+
+.qr-code {
+  width: 220px;
+  height: 220px;
+  border-radius: 10px;
 }
