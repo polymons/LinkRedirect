@@ -15,7 +15,7 @@ const SocialMediaButton: React.FC<SocialMediaButtonProps> = ({ name, url, id }) 
 
   return (
     <a href={url} target="_blank" rel="noopener noreferrer">
-      <button onClick={handleClick} className="p-2 bg-blue-500 text-white rounded">
+      <button onClick={handleClick} className="">
         {name}
       </button>
     </a>

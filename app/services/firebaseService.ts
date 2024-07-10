@@ -4,6 +4,7 @@ import { getFirestore, doc, updateDoc, increment } from "firebase/firestore";
 import { getAnalytics, isSupported, logEvent } from "firebase/analytics";
 import { firebaseConfig } from "../../firebaseConfig";
 
+
 class FirebaseService {
     private app;
     private db;
@@ -28,6 +29,7 @@ class FirebaseService {
   }
 
   async incrementClickCount(id: string) {
+
       if (this.db) {
           const docRef = doc(this.db, "clicks", id);
           await updateDoc(docRef, { count: increment(1) });
