@@ -40,7 +40,6 @@ const Home: React.FC = () => {
 <Link href="https://www.stopkillerrobots.org/">
     <Image src="/SKR_Logo_RGB_Yellow.webp" alt="SKR Logo" width={120} height={120} />
 </Link>
-  
   <div className="flex flex-col gap-5">
     {socialMediaLinks.map((link) => (
       <SocialMediaButton 
