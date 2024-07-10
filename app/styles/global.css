@@ -55,15 +55,34 @@ body {
 }
 
 
-button {
+/* button:hover {
   background-color: yellow;
   color: black;
   padding: 10px 20px;
-  border: none;
+  border: 2px solid black;
   border-radius: 5px;
 }
-button :hover {
+button {
   background-color: black;
-  color: white;
-  border: 2px solid white;
+  color: yellow;
+  padding: 10px 20px;
+  border: 2px solid yellow;
+  border-radius: 5px;
+} */
+
+.social-button {
+  background-color: black;
+  color: yellow;
+  padding: 10px 20px;
+  border: 2px solid yellow;
+  border-radius: 20px;
+  width: 100%;
+}
+.social-button:hover {
+  background-color: yellow;
+  color: black;
+  padding: 10px 20px;
+  border: 2px solid black;
+  border-radius: 20px;
+  width: 100%;
 }
