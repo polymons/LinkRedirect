@@ -77,7 +77,7 @@ const Home: React.FC = () => {
 				/>
 				{/* <Image src="/skr512.png" alt="SKR Logo" width={120} height={120} loading="lazy"/> */}
 			</Link>
-      
+
 			<div className="flex flex-col gap-5">
 				{socialMediaLinks.map((link) => (
 					<SocialMediaButton key={link.id} {...link} />
@@ -99,7 +99,7 @@ const Home: React.FC = () => {
         </Link>
 			</div>
 
-			{/*       <div className="flex flex-row gap-5 ">
+			{/*<div className="flex flex-row gap-5 ">
         {renderImages(5)}
       </div> */}
 		</main>
