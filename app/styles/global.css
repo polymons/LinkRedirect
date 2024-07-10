@@ -53,3 +53,18 @@ body {
 .text-balance {
   text-wrap: balance;
 }
+
+
+button {
+  background-color: yellow;
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+button :hover {
+  background-color: black;
+  color: white;
+  border: 2px solid white;
+}
