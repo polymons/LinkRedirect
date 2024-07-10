@@ -64,7 +64,7 @@ const Home: React.FC = () => {
 	}; */
 
 	return (
-		<main className="flex flex-col items-center justify-between p-6 md:p-24 min-h-screen">
+		<main className="flex flex-col items-center justify-between p-6 md:p-24 min-h-screen gap-5 ">
 			{/*   <h1 className="text-xl md:text-3xl font-bold">SKR</h1> */}
 			<Link href="https://www.stopkillerrobots.org/">
 				<img
