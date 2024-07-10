@@ -3,6 +3,7 @@ import { initializeApp } from "firebase/app";
 import { getFirestore, doc, updateDoc, increment } from "firebase/firestore";
 import { getAnalytics, isSupported, logEvent } from "firebase/analytics";
 import { firebaseConfig } from "../../firebaseConfig";
+import { getDoc, setDoc } from "firebase/firestore";
 
 
 class FirebaseService {
@@ -29,11 +30,16 @@ class FirebaseService {
   }
 
   async incrementClickCount(id: string) {
-
-      if (this.db) {
-          const docRef = doc(this.db, "clicks", id);
-          await updateDoc(docRef, { count: increment(1) });
+    if (this.db) {
+      const docRef = doc(this.db, "clicks", id);
+      const docSnap = await getDoc(docRef);
+      
+      if (docSnap.exists()) {
+        await updateDoc(docRef, { count: increment(1) });
+      } else {
+        await setDoc(docRef, { count: 1 });
       }
+    }
   }
 }
 const firebaseService = new FirebaseService();
