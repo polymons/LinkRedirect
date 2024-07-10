@@ -24,11 +24,15 @@ const Home: React.FC = () => {
         ))}
       </div>
 
-      <Link href="https://www.stopkillerrobots.org/">
-        <a className="text-blue-500 underline">International Campaign to Stop Killer Robots</a>
+      <Link
+        href="https://www.stopkillerrobots.org/"
+        className="text-blue-500 underline">
+        International Campaign to Stop Killer Robots
       </Link>
-      <Link href="https://www.stopkillerrobots.org/frequently-asked-questions/">
-        <a className="text-blue-500 underline">FAQ</a>
+      <Link
+        href="https://www.stopkillerrobots.org/frequently-asked-questions/"
+        className="text-blue-500 underline">
+        FAQ
       </Link>
     </main>
   );
