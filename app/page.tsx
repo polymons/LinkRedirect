@@ -17,7 +17,7 @@ const socialMediaLinks = [
 const Home: React.FC = () => {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1 className="text-2xl font-bold">Social Media Links</h1>
+      <h1 className="text-2xl font-bold">SKR</h1>
       <div className="flex flex-col gap-4">
         {socialMediaLinks.map((link) => (
           <SocialMediaButton key={link.id} {...link} />
