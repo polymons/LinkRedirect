@@ -8,17 +8,17 @@ import firebaseService from "./services/firebaseService";
 
 const socialMediaLinks = [
 	{
-		name: "Petition",
+		name: "Petíció",
 		url: "https://act.stopkillerrobots.org/stop-killer-robots-petition",
 		id: "petition",
 	},
 	{
-		name: "Hungarian Activist Network Facebook",
+		name: "Facebook",
 		url: "https://www.facebook.com/skrmagyarorszag/",
 		id: "facebook",
 	},
 	{
-		name: "Digital Dehumanisation",
+		name: "Digitális dehumanizáció kiállítás",
 		url: "https://www.stopkillerrobots.org/stop-killer-robots/digital-dehumanisation/",
 		id: "digitexhibition",
 	},
