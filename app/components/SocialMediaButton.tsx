@@ -1,5 +1,6 @@
 import React from "react";
 import firebaseService from "../services/firebaseService";
+import "../styles/SocialMediaButton.css";
 
 type SocialMediaButtonProps = {
   name: string;

@@ -11,6 +11,7 @@ class FirebaseService {
     private db;
     private analytics: any;
 
+
   constructor() {
     if (typeof window !== "undefined") { {
       console.log("Initializing...");
@@ -19,6 +20,7 @@ class FirebaseService {
       isSupported().then((supported) => {
         if (supported) {
           this.analytics = getAnalytics(this.app);
+          console.log("Analytics initialized");
         }
       });
     }
