@@ -13,7 +13,6 @@ class FirebaseService {
 
 
   constructor() {
-    if (typeof window !== "undefined") { {
       console.log("Initializing...");
       this.app = initializeApp(firebaseConfig);
       this.db = getFirestore(this.app);
@@ -24,8 +23,6 @@ class FirebaseService {
         }
       });
     }
-    }
-  }
 
   logClickEvent(id: string) {
     if (this.analytics) {
