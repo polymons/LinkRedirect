@@ -1,16 +1,24 @@
 .social-button {
-    background-color: black;
-    color: yellow;
-    padding: 10px 20px;
-    border: 2px solid yellow;
-    border-radius: 15px;
-    width: 100%;
-  }
-  .social-button:hover {
-    background-color: yellow;
-    color: black;
-    padding: 10px 20px;
-    border: 2px solid black;
-    border-radius: 15px;
-    width: 100%;
-  }
+  background-color: black;
+  color: yellow;
+  padding: 10px 20px;
+  border: 2px solid yellow;
+  border-radius: 15px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.social-button:hover {
+  background-color: yellow;
+  color: black;
+  padding: 10px 20px;
+  border: 2px solid black;
+  border-radius: 15px;
+  width: 100%;
+}
+
+.arrow {
+  align-self: flex-end;
+}
