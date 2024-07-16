@@ -1,6 +1,7 @@
+"use client";
 import React from "react";
 import firebaseService from "../services/firebaseService";
-import "../styles/SocialMediaButton.css";
+import styles from "../styles/SocialMediaButton.module.css";
 
 type SocialMediaButtonProps = {
   name: string;
@@ -16,8 +17,8 @@ const SocialMediaButton: React.FC<SocialMediaButtonProps> = ({ name, url, id }) 
 
   return (
     <a href={url} target="_blank" rel="noopener noreferrer">
-      <button onClick={handleClick} className="social-button">
-        {name} <span className="arrow">&#8594;</span>
+      <button onClick={handleClick} className={styles.socialButton}>
+        {name} <span className={styles.arrow}>&#8594;</span>
       </button>
     </a>
   );

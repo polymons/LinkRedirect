@@ -1,4 +1,4 @@
-.social-button {
+.socialButton {
   background-color: black;
   color: yellow;
   padding: 10px 20px;
@@ -8,17 +8,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: background-color 0.2s, color 0.2s;
 }
 
-.social-button:hover {
+.socialButton:hover {
   background-color: yellow;
   color: black;
-  padding: 10px 20px;
-  border: 2px solid black;
-  border-radius: 15px;
-  width: 100%;
+}
+
+.socialButton:hover .arrow {
+  color: black;
+  font-weight: bold;
 }
 
 .arrow {
   align-self: flex-end;
+  transition: color 0.3s, font-weight 0.3s;
 }

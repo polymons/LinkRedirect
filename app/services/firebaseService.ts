@@ -5,7 +5,6 @@ import { getAnalytics, isSupported, logEvent } from "firebase/analytics";
 import { firebaseConfig } from "../../firebaseConfig";
 import { getDoc, setDoc } from "firebase/firestore";
 
-
 class FirebaseService {
     private app;
     private db;
@@ -27,6 +26,11 @@ class FirebaseService {
   logClickEvent(id: string) {
     if (this.analytics) {
       logEvent(this.analytics, `click_${id}`);
+    }
+  }
+  logLanguageChange(language: string) {
+    if (this.analytics) {
+      logEvent(this.analytics, 'language_change', { language });
     }
   }
 
