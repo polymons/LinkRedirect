@@ -17,12 +17,12 @@ const socialMediaLinks: { name: { en: string; hu: string; }; url: string; id: st
     id: "petition",
   },
   {
-    name: { en: "Facebook", hu: "Facebook" },
+    name: { en: "Hungarian Facebook", hu: "Facebook" },
     url: "https://www.facebook.com/skrmagyarorszag/",
     id: "facebook",
   },
   {
-    name: { en: "Digital Dehumanization Exhibition", hu: "Digitális dehumanizáció kiállítás" },
+    name: { en: "Digital Dehumanization", hu: "Digitális dehumanizáció" },
     url: "https://www.stopkillerrobots.org/stop-killer-robots/digital-dehumanisation/",
     id: "digitexhibition",
   },

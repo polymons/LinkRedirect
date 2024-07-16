@@ -23,5 +23,6 @@
 
 .arrow {
   align-self: flex-end;
+  padding-left: 20px;
   transition: color 0.3s, font-weight 0.3s;
 }
