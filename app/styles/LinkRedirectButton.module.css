@@ -1,0 +1,35 @@
+.redirectButton {
+  background-color: black;
+  color: yellow;
+  padding: 10px 20px;
+  border: 2px solid yellow;
+  border-radius: 15px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 600;
+  background-image: linear-gradient(to right, yellow 50%, black 50%);
+  background-size: 200% 100%; /* Double the background size for the swipe effect */
+  background-position: right bottom; /* Start with the yellow off-screen */
+  transition: background-color 0.2s, color 0.2s, background-position 0.2s ease-out;;
+}
+
+.redirectButton:hover {
+  background-color: yellow;
+  color: black;
+  background-position: left bottom; /* Swipe the yellow on-screen */
+}
+
+.redirectButton:hover .arrow {
+  color: black;
+  font-weight: bold;
+  transform: scale(1.2);
+}
+
+.arrow {
+  align-self: flex-end;
+  padding-left: 20px;
+  transition: color 0.3s, font-weight 0.3s, transform 0.3s;
+}

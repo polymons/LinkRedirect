@@ -5,17 +5,30 @@ import "./styles/globals.css";
 import { AppProps } from 'next/app';
 import { LanguageProvider } from './contexts/LanguageContext';
 import Head from 'next/head';
+import { isContext } from 'vm';
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Link redirect",
   description: "A simple link redirect page",
+  icons: [
+    {
+      href: "/favicon.ico",
+      sizes: "any",
+      type: "image/x-icon",
+    }],
   keywords: ["link", "redirect", "page", "simple", "skr"],
   metadataBase: new URL('https://skrlinkredirect.web.app/'),
   openGraph: {
     title: "Link redirect",
     description: "A simple link redirect page",
+    icons: [
+      {
+        url: "/favicon.ico",
+        sizes: "any",
+        type: "image/x-icon",
+      }],
     type: "website",
     images: [
       {
@@ -42,14 +55,24 @@ export default function RootLayout({
       <Head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/SKR_Logo_RGB_Yellow.webp" />
+        <link rel="icon" href="/SKR_Logo_RGB_Yellow.png" sizes="any"/>
+        <link rel="icon" href="/favicon.ico" sizes="any"/>
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
         <meta name="keywords" content={metadata.keywords.join(', ')} />
+        <meta name="author" content="polymons" />
+        <meta name="robots" content="index, follow" />
+        <meta name="googlebot" content="index, follow" />
+        <meta name="google" content="notranslate" />
+
+        TODO: Fix favicon not showing up
 
         {/* Open Graph Metadata */}
         <meta property="og:title" content={metadata.openGraph.title} />
         <meta property="og:description" content={metadata.openGraph.description} />
+        <meta property="og:locale" content={metadata.openGraph.locale} />
+        <meta property="og:locale:alternate" content="hu_HU" />
+        <meta property='og:icon' content={`${metadata.metadataBase}${metadata.openGraph.icons[0].url}`}/>
         <meta property="og:type" content={metadata.openGraph.type} />
         <meta property="og:image" content={`${metadata.metadataBase}${metadata.openGraph.images[0].url}`} />
         <meta property="og:image:width" content={metadata.openGraph.images[0].width.toString()} />

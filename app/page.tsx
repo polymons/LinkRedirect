@@ -1,7 +1,7 @@
 // page.tsx
 "use client";
 import React, { useEffect } from "react";
-import SocialMediaButton from "./components/SocialMediaButton";
+import LinkRedirectButton from "./components/LinkRedirectButton";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -26,6 +26,12 @@ const socialMediaLinks: { name: { en: string; hu: string; }; url: string; id: st
     url: "https://www.stopkillerrobots.org/stop-killer-robots/digital-dehumanisation/",
     id: "digitexhibition",
   },
+  {
+    name: { en: "Youth poll", hu: "Ifjúsági felmérés" },
+    url: "https://docs.google.com/forms/d/e/1FAIpQLSfmqdrOWCP_KrE4S_j1VwqQ2aXFUCrEqFSNEnqlUaqhEXDQSg/viewform?usp=sf_link",
+    id: "youthpoll",
+  }
+
 ];
 
 const Home: React.FC = () => {
@@ -63,7 +69,7 @@ const Home: React.FC = () => {
       </Link>
       <div className="flex flex-col gap-5">
         {socialMediaLinks.map((link) => (
-          <SocialMediaButton key={link.id} id={link.id} name={link.name[language]} url={link.url} />
+          <LinkRedirectButton key={link.id} id={link.id} name={link.name[language]} url={link.url} />
         ))}
       </div>
       <div className="flex flex-row gap-5">
