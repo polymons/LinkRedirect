@@ -9,8 +9,10 @@ import firebaseService from "./services/firebaseService";
 import FlagSwitcher from "./components/FlagSwitcher";
 import { useLanguage } from "./contexts/LanguageContext";
 import styles from "./styles/Home.module.css";
+import SocialMediaButton from "./components/SocialMediaButton";
 
-const socialMediaLinks: { name: { en: string; hu: string; }; url: string; id: string; }[] = [
+
+const linkRedirectLinks: { name: { en: string; hu: string; }; url: string; id: string; }[] = [
   {
     name: { en: "Petition", hu: "Petíció" },
     url: "https://act.stopkillerrobots.org/stop-killer-robots-petition",
@@ -31,7 +33,24 @@ const socialMediaLinks: { name: { en: string; hu: string; }; url: string; id: st
     url: "https://docs.google.com/forms/d/e/1FAIpQLSfmqdrOWCP_KrE4S_j1VwqQ2aXFUCrEqFSNEnqlUaqhEXDQSg/viewform?usp=sf_link",
     id: "youthpoll",
   }
+];
 
+const SocialMediaButtons: { name: string; url: string; id: string; }[] = [
+  {
+    name: "Facebook",
+    url: "https://www.facebook.com/stopkillerrobots",
+    id: "facebook",
+  },
+  {
+    name: "Instagram",
+    url: "https://www.instagram.com/stopkillerrobots/",
+    id: "instagram",
+  },
+  {
+    name: "TiKTok",
+    url: "https://www.tiktok.com/@stopkillerrobots",
+    id: "tiktok",
+  },
 ];
 
 const Home: React.FC = () => {
@@ -68,10 +87,17 @@ const Home: React.FC = () => {
         />
       </Link>
       <div className="flex flex-col gap-5">
-        {socialMediaLinks.map((link) => (
+        {linkRedirectLinks.map((link) => (
           <LinkRedirectButton key={link.id} id={link.id} name={link.name[language]} url={link.url} />
         ))}
       </div>
+
+      <div className="flex flex-row gap-5">
+        {SocialMediaButtons.map((button) => (
+          <SocialMediaButton key={button.id} name={button.name} url={button.url} id={button.id} />
+        ))}
+      </div>
+      
       <div className="flex flex-row gap-5">
         <Link
           href="https://www.stopkillerrobots.org/frequently-asked-questions/"
