@@ -7,9 +7,9 @@
     gap: 10px;
 }
 .languageSwitch img {
-    width: 40px;
+    width: 50px;
     height: 40px;
-    border-radius: 20%;
+    border-radius: 15%;
     cursor: pointer;
 }
 .motd {

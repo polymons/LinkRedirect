@@ -1,9 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 import LinkRedirectButton from "./components/LinkRedirectButton";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 import firebaseService from "./services/firebaseService";
 import FlagSwitcher from "./components/FlagSwitcher";
 import { useLanguage } from "./contexts/LanguageContext";
@@ -34,7 +32,7 @@ const linkRedirectLinks: { name: { en: string; hu: string; }; url: string; id: s
   }
 ];
 
-const SocialMediaButtons: { name: string; url: string; id: string; }[] = [
+const SocialMediaButtons: { name: string; url: string; id: string; } [] = [
   {
     name: "Facebook",
     url: "https://www.facebook.com/stopkillerrobots",
@@ -91,7 +89,7 @@ const Home: React.FC = () => {
         ))}
       </div>
 
-      <div className="flex flex-row gap-5">
+       <div className="flex flex-row gap-5">
         {SocialMediaButtons.map((button) => (
           <SocialMediaButton key={button.id} name={button.name} url={button.url} id={button.id} />
         ))}

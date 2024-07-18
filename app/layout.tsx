@@ -55,7 +55,6 @@ export default function RootLayout({
       <Head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/SKR_Logo_RGB_Yellow.png" sizes="any"/>
         <link rel="icon" href="/favicon.ico" sizes="any"/>
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
@@ -64,8 +63,6 @@ export default function RootLayout({
         <meta name="robots" content="index, follow" />
         <meta name="googlebot" content="index, follow" />
         <meta name="google" content="notranslate" />
-
-        TODO: Fix favicon not showing up
 
         {/* Open Graph Metadata */}
         <meta property="og:title" content={metadata.openGraph.title} />
