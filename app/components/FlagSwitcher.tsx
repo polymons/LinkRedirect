@@ -23,7 +23,7 @@ const FlagSwitcher: React.FC = () => {
         alt="English"
         width={50}
         height={40}
-        className={language === 'en' ? 'border-2 border-blue-500' : ''}
+        className={language === 'en' ? 'border-4 border-blue-600' : ''}
         onClick={handleLanguageChange}
       />
       <img
@@ -31,7 +31,7 @@ const FlagSwitcher: React.FC = () => {
         alt="Hungarian"
         width={50}
         height={40}
-        className={language === 'hu' ? 'border-2 border-blue-500' : ''}
+        className={language === 'hu' ? 'border-4 border-blue-600' : ''}
         onClick={handleLanguageChange}
       />
       </span>
