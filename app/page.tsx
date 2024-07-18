@@ -1,4 +1,3 @@
-// page.tsx
 "use client";
 import React, { useEffect } from "react";
 import LinkRedirectButton from "./components/LinkRedirectButton";
