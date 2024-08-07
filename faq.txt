@@ -1,0 +1,13 @@
+https://skrlinkredirect.web.app/
+
+I designed and developed this page to be able to:
+- work in an environmentally friendly way (we only need to print one QR code design and we can change and update the contents later)
+- count QR code scans at events
+- count page visits overall
+- monitor conversion rate
+- collect anonymous data about user behavior to improve our ability to reach a wider audience (We do not use cookies or store any personal data)
+- experiment with different materials
+- promote our social media
+- reach a multilingual audience
+- be accessible to anyone
+- make it easy for anyone to share our cause

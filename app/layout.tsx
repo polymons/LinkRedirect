@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import "./styles/globals.css";
 import { LanguageProvider } from './contexts/LanguageContext';
 import Head from 'next/head';
+import Link from 'next/link';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -75,7 +76,9 @@ export default function RootLayout({ children }: Readonly< { children: React.Rea
           {children}
         </LanguageProvider>
         <footer>
+          <Link href="https://www.instagram.com/vincedurko/">
           <p>© {new Date().getFullYear()} polymons</p>
+          </Link>
         </footer>
       </body>
     </html>

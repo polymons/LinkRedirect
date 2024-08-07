@@ -7,6 +7,7 @@ import FlagSwitcher from "./components/FlagSwitcher";
 import { useLanguage } from "./contexts/LanguageContext";
 import styles from "./styles/Home.module.css";
 import SocialMediaButton from "./components/SocialMediaButton";
+import Image from 'next/image';
 
 
 const linkRedirectLinks: { name: { en: string; hu: string; }; url: string; id: string; }[] = [
@@ -14,11 +15,6 @@ const linkRedirectLinks: { name: { en: string; hu: string; }; url: string; id: s
     name: { en: "Petition", hu: "Petíció" },
     url: "https://act.stopkillerrobots.org/stop-killer-robots-petition",
     id: "petition",
-  },
-  {
-    name: { en: "Hungarian Facebook", hu: "Facebook" },
-    url: "https://www.facebook.com/skrmagyarorszag/",
-    id: "facebook",
   },
   {
     name: { en: "Digital Dehumanization", hu: "Digitális dehumanizáció" },
@@ -29,23 +25,28 @@ const linkRedirectLinks: { name: { en: string; hu: string; }; url: string; id: s
     name: { en: "Youth poll", hu: "Ifjúsági felmérés" },
     url: "https://docs.google.com/forms/d/e/1FAIpQLSfmqdrOWCP_KrE4S_j1VwqQ2aXFUCrEqFSNEnqlUaqhEXDQSg/viewform?usp=sf_link",
     id: "youthpoll",
-  }
+  },
+  {
+    name: { en: "Game", hu: "Játék" },
+    url: "/games/captcha",
+    id: "playgame",
+  },
 ];
 
-const SocialMediaButtons: { name: string; url: string; id: string; } [] = [
+const SocialMediaButtons: { name: string; url: { en: string; hu: string; }; id: string; } [] = [
   {
     name: "Facebook",
-    url: "https://www.facebook.com/stopkillerrobots",
+    url: { en:"https://www.facebook.com/stopkillerrobots", hu:"https://www.facebook.com/skrmagyarorszag/"},
     id: "facebook",
   },
   {
     name: "Instagram",
-    url: "https://www.instagram.com/stopkillerrobots/",
+    url: { en:"https://www.instagram.com/stopkillerrobots/", hu: "https://www.instagram.com/stopkillerrobots/" },
     id: "instagram",
   },
   {
     name: "TiKTok",
-    url: "https://www.tiktok.com/@stopkillerrobots",
+    url: { en:"https://www.tiktok.com/@stopkillerrobots", hu: "https://www.tiktok.com/@stopkillerrobots.hungary" },
     id: "tiktok",
   },
 ];
@@ -74,7 +75,7 @@ const Home: React.FC = () => {
     <main className="flex flex-col items-center justify-between p-6 md:p-24 min-h-screen gap-5">
       <FlagSwitcher />
       <Link href="https://www.stopkillerrobots.org/">
-        <img
+        <Image
           src="/skr512.png"
           alt="SKR Logo"
           width={220}
@@ -91,7 +92,7 @@ const Home: React.FC = () => {
 
        <div className="flex flex-row gap-5">
         {SocialMediaButtons.map((button) => (
-          <SocialMediaButton key={button.id} name={button.name} url={button.url} id={button.id} />
+          <SocialMediaButton key={button.id} name={button.name} url={button.url[language]} id={button.id} />
         ))}
       </div>
       
