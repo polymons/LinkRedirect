@@ -75,7 +75,7 @@ const Home: React.FC = () => {
     <main className="flex flex-col items-center justify-between p-6 md:p-24 min-h-screen gap-5">
       <FlagSwitcher />
       <Link href="https://www.stopkillerrobots.org/">
-        <Image
+        <img
           src="/skr512.png"
           alt="SKR Logo"
           width={220}

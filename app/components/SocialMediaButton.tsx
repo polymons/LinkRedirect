@@ -4,12 +4,13 @@ import firebaseService from "../services/firebaseService";
 import styles from "../styles/SocialMediaButton.module.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faTiktok, faInstagram, faFacebook } from '@fortawesome/free-brands-svg-icons';
-
+import { LanguageProvider, useLanguage } from "../contexts/LanguageContext";
 
 type SocialMediaButtonProps = {
 	name: string;
 	url: string;
 	id: string;
+	 
 };
 
 const renderIcon = (platformName: string) => {
@@ -26,18 +27,24 @@ const renderIcon = (platformName: string) => {
 		console.warn(`Unknown platform: ${platformName}`);
 		return null; // Default case if no matching platform
 	}
+	
   };
-  
+
+ 
 
 const SocialMediaButton: React.FC<SocialMediaButtonProps> = ({
 	name,
 	url,
 	id,
 }) => {
+
+	const { language } = useLanguage();
+
 	const handleClick = async () => {
 		firebaseService.logClickEvent(id); //Log event to Firebase Analytics
-		await firebaseService.incrementClickCount(id+"_social_media"); //Increment click count in Firestore
+		await firebaseService.incrementClickCount(id + "_social_media_" + language); //Increment click count in Firestore with page language
 	};
+
 
 	return (
 		<a href={url} target="_blank" rel="noopener noreferrer">

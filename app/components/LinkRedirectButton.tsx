@@ -2,6 +2,7 @@
 import React from "react";
 import firebaseService from "../services/firebaseService";
 import styles from "../styles/LinkRedirectButton.module.css";
+import { useLanguage } from "../contexts/LanguageContext";
 
 type LinkRedirectButtonProps = {
   name: string;
@@ -10,9 +11,12 @@ type LinkRedirectButtonProps = {
 };
 
 const LinkRedirectButton: React.FC<LinkRedirectButtonProps> = ({ name, url, id }) => {
+
+  const { language } = useLanguage();
+
   const handleClick = async () => {
     firebaseService.logClickEvent(id);  //Log event to Firebase Analytics
-    await firebaseService.incrementClickCount(id);  //Increment click count in Firestore
+    await firebaseService.incrementClickCount(id + "_" + language);  //Increment click count in Firestore
   };
 
   return (
