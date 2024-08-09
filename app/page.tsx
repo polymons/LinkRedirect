@@ -7,7 +7,6 @@ import FlagSwitcher from "./components/FlagSwitcher";
 import { useLanguage } from "./contexts/LanguageContext";
 import styles from "./styles/Home.module.css";
 import SocialMediaButton from "./components/SocialMediaButton";
-import Image from "next/image";
 
 const linkRedirectLinks: {
 	name: { en: string; hu: string };
@@ -34,6 +33,8 @@ const linkRedirectLinks: {
 		url: "/game",
 		id: "playgame",
 	}, */
+
+	//add split or steal / prisoners dilemma 2 player game - https://prisoners-dilemma-nine.vercel.app/
 ];
 
 const SocialMediaButtons: {
