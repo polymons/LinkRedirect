@@ -1,18 +1,44 @@
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: calc(100vh - 100px);
+  width: 100%;
+  padding: 0.5rem;
+}
+
 .gameContainer {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  padding: 2rem;
+  padding: 1rem;
+  width: 100%;
   max-width: 800px;
   margin: 0 auto;
 }
 
 .gameTitle {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  margin-bottom: 1.25rem;
   color: #333;
   text-align: center;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .mainContent {
+    padding: 1rem;
+  }
+  
+  .gameContainer {
+    padding: 2rem;
+  }
+  
+  .gameTitle {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
 }
 
 .playerSection {
@@ -59,7 +85,7 @@
 }
 
 .resultSection {
-  margin-top: 2rem;
+  margin-top: 1rem;
   padding: 1rem;
   border-radius: 8px;
   background-color: #f5f5f5;
@@ -68,50 +94,101 @@
 }
 
 .resultTitle {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   margin-bottom: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .resultSection {
+    margin-top: 2rem;
+  }
+  
+  .resultTitle {
+    font-size: 1.5rem;
+  }
 }
 
 /* New styles for the enhanced game */
 .gameNav {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
   width: 100%;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   background-color: #f5f5f5;
-  padding: 1rem;
+  padding: 0.75rem;
   border-radius: 8px;
+  gap: 0.75rem;
 }
 
 .scoreboard {
-  display: flex;
-  gap: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  width: 100%;
 }
 
 .scoreItem {
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 0.5rem;
+  border-radius: 4px;
 }
 
 .navButtons {
   display: flex;
-  gap: 0.75rem;
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .gameNav {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .scoreboard {
+    display: flex;
+    width: auto;
+    gap: 1.5rem;
+  }
+  
+  .scoreItem {
+    font-size: 1.1rem;
+    background-color: transparent;
+    padding: 0;
+  }
+  
+  .navButtons {
+    width: auto;
+  }
 }
 
 .rulesButton, .statsButton {
   background-color: #333;
   color: white;
   border: none;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem;
   border-radius: 4px;
   cursor: pointer;
   font-weight: 600;
   transition: background-color 0.2s;
+  flex: 1;
+  font-size: 0.9rem;
+  text-align: center;
 }
 
 .rulesButton:hover, .statsButton:hover {
   background-color: #555;
+}
+
+.rulesButton:active, .statsButton:active {
+  transform: scale(0.98);
 }
 
 .statsButton {
@@ -124,20 +201,51 @@
 
 .rulesSection {
   background-color: #f9f9f9;
-  padding: 1rem;
+  padding: 0.75rem;
   border-radius: 8px;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   border-left: 4px solid #333;
   width: 100%;
+  font-size: 0.9rem;
 }
 
 .rulesSection h2 {
   margin-top: 0;
   color: #333;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
 }
 
 .rulesSection ul {
-  margin-left: 1.5rem;
+  margin-left: 1rem;
+  padding-left: 0.5rem;
+}
+
+.rulesSection p, .rulesSection li {
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .rulesButton, .statsButton {
+    padding: 0.5rem 1rem;
+    flex: 0 1 auto;
+    font-size: 1rem;
+  }
+  
+  .rulesSection {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+  }
+  
+  .rulesSection h2 {
+    font-size: 1.4rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .rulesSection ul {
+    margin-left: 1.5rem;
+  }
 }
 
 .playerTurn {
@@ -145,24 +253,44 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding: 1.5rem;
+  padding: 1rem;
   background-color: #f5f5f5;
   border-radius: 8px;
 }
 
+.playerTurn h2 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.playerTurn p {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
 .choiceButtons {
   display: flex;
-  gap: 1.5rem;
-  margin-top: 1rem;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+  width: 100%;
+  max-width: 320px;
 }
 
 .choiceButton {
-  padding: 1rem 2rem;
-  font-size: 1.2rem;
+  padding: 1.2rem 0;
+  font-size: 1.1rem;
   font-weight: 600;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s;
+  width: 100%;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.choiceButton:active {
+  transform: scale(0.98);
 }
 
 .cooperateButton {
@@ -185,19 +313,47 @@
   background-color: #d32f2f;
 }
 
+@media (min-width: 768px) {
+  .playerTurn {
+    padding: 1.5rem;
+  }
+  
+  .playerTurn h2 {
+    font-size: 1.5rem;
+  }
+  
+  .playerTurn p {
+    font-size: 1rem;
+  }
+  
+  .choiceButtons {
+    flex-direction: row;
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+  
+  .choiceButton {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    width: auto;
+  }
+}
+
 .choiceSummary {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  gap: 0.75rem;
   width: 100%;
-  margin: 1rem 0;
+  margin: 0.75rem 0;
 }
 
 .playerChoice {
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem 0.75rem;
   border-radius: 8px;
   font-weight: 600;
-  width: 45%;
+  width: 100%;
   text-align: center;
+  font-size: 0.9rem;
 }
 
 .cooperateChoice {
@@ -213,21 +369,66 @@
 }
 
 .resultText {
-  font-size: 1.2rem;
-  margin: 1rem 0;
+  font-size: 1rem;
+  margin: 0.75rem 0;
+  line-height: 1.4;
 }
 
 .actionButtons {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  width: 100%;
+}
+
+@media (min-width: 480px) {
+  .choiceSummary {
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 1rem 0;
+  }
+  
+  .playerChoice {
+    width: 47%;
+    font-size: 1rem;
+  }
+  
+  .actionButtons {
+    display: flex;
+    justify-content: center;
+    width: auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .resultText {
+    font-size: 1.2rem;
+    margin: 1rem 0;
+  }
+  
+  .actionButtons {
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .playerChoice {
+    padding: 0.75rem 1.5rem;
+  }
 }
 
 .nextButton, .resetButton {
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem 1rem;
   font-weight: 600;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
+  width: 100%;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+}
+
+.nextButton:active, .resetButton:active {
+  transform: scale(0.98);
 }
 
 .nextButton {
@@ -250,12 +451,27 @@
   background-color: #757575;
 }
 
+@media (min-width: 480px) {
+  .nextButton, .resetButton {
+    width: auto;
+    min-width: 120px;
+  }
+}
+
+@media (min-width: 768px) {
+  .nextButton, .resetButton {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    min-width: 140px;
+  }
+}
+
 /* Statistics Section */
 .statsSection {
   background-color: #f0f8ff;
-  padding: 1rem;
+  padding: 0.75rem;
   border-radius: 8px;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   border-left: 4px solid #2196f3;
   width: 100%;
 }
@@ -263,35 +479,88 @@
 .statsSection h2 {
   margin-top: 0;
   color: #1976d2;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.2rem;
 }
 
 .statsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 0.5rem;
 }
 
 .statItem {
   background-color: white;
   border-radius: 6px;
-  padding: 0.75rem;
+  padding: 0.5rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
 .statLabel {
   font-weight: 600;
   color: #333;
+  font-size: 0.9rem;
 }
 
 .statValue {
   font-family: monospace;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   color: #1976d2;
   background-color: #e3f2fd;
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
+  word-break: break-word;
+  text-align: center;
+}
+
+/* Footer styles */
+.gameFooter {
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
+  margin-top: auto;
+  font-size: 0.85rem;
+  color: #666;
+  border-top: 1px solid #eee;
+}
+
+@media (min-width: 480px) {
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .statsSection {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .statsSection h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+  
+  .statsGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  
+  .statItem {
+    padding: 0.75rem;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .statLabel {
+    font-size: 1rem;
+  }
+  
+  .statValue {
+    font-size: 1rem;
+  }
 }

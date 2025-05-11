@@ -1,10 +1,17 @@
 import { useState, useEffect } from 'react';
 import styles from '../app/styles/game.module.css';
+import headerStyles from '../app/styles/Home.module.css';
+import FlagSwitcher from '../app/components/FlagSwitcher';
+import HeaderLogo from '../app/components/HeaderLogo';
+import GameButton from '../app/components/GameButton';
+import Link from 'next/link';
+import { useLanguage, LanguageProvider } from '../app/contexts/LanguageContext';
+import Head from 'next/head';
 
 // Game outcome types for statistics
 type GameOutcome = 'mutualCooperation' | 'mutualDefection' | 'player1Exploited' | 'player2Exploited';
 
-const Game = () => {
+const GameContent = () => {
     // Player choices and results
     const [player1Choice, setPlayer1Choice] = useState('');
     const [player2Choice, setPlayer2Choice] = useState('');
@@ -17,6 +24,13 @@ const Game = () => {
     const [round, setRound] = useState(1);
     const [showRules, setShowRules] = useState(false);
     const [showStats, setShowStats] = useState(false);
+    const [currentYear, setCurrentYear] = useState("2025");
+    const { language } = useLanguage();
+    
+    // Set current year for footer on client-side
+    useEffect(() => {
+        setCurrentYear(new Date().getFullYear().toString());
+    }, []);
     
     // Detailed statistics
     const [statistics, setStatistics] = useState<{
@@ -142,145 +156,178 @@ const Game = () => {
     };
 
     return (
-        <div className={styles.gameContainer}>
-            <h1 className={styles.gameTitle}>Prisoner&apos;s Dilemma Game</h1>
+        <>
+            <Head>
+                <title>Prisoner&apos;s Dilemma Game | SKR</title>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            </Head>
             
-            <div className={styles.gameNav}>
-                <div className={styles.scoreboard}>
-                    <div className={styles.scoreItem}>
-                        <span>Round: {round}</span>
-                    </div>
-                    <div className={styles.scoreItem}>
-                        <span>Player 1: {player1Score} pts</span>
-                    </div>
-                    <div className={styles.scoreItem}>
-                        <span>Player 2: {player2Score} pts</span>
-                    </div>
-                </div>
-                <div className={styles.navButtons}>
-                    <button className={styles.rulesButton} onClick={toggleRules}>
-                        {showRules ? 'Hide Rules' : 'Show Rules'}
-                    </button>
-                    <button className={styles.statsButton} onClick={toggleStats}>
-                        {showStats ? 'Hide Stats' : 'Show Stats'}
-                    </button>
+            {/* Header */}
+            <div className={headerStyles.header}>
+                <HeaderLogo />
+                <div className={headerStyles.headerControls}>
+                    <GameButton />
+                    <FlagSwitcher />
                 </div>
             </div>
             
-            {showRules && (
-                <div className={styles.rulesSection}>
-                    <h2>Game Rules:</h2>
-                    <p>In the Prisoner&apos;s Dilemma, two players must choose to either cooperate or defect:</p>
-                    <ul>
-                        <li>If both players cooperate, each receives 3 points.</li>
-                        <li>If both players defect, each receives 1 point.</li>
-                        <li>If one player cooperates and the other defects, the defector receives 5 points while the cooperator gets 0.</li>
-                    </ul>
-                    <p>This game is played in a &quot;hot seat&quot; style where players take turns on the same device.</p>
+            <main className={styles.mainContent}>
+                <div className={styles.gameContainer}>
+                    <h1 className={styles.gameTitle}>Prisoner&apos;s Dilemma Game</h1>
+                    
+                    <div className={styles.gameNav}>
+                        <div className={styles.scoreboard}>
+                            <div className={styles.scoreItem}>
+                                <span>Round: {round}</span>
+                            </div>
+                            <div className={styles.scoreItem}>
+                                <span>Player 1: {player1Score} pts</span>
+                            </div>
+                            <div className={styles.scoreItem}>
+                                <span>Player 2: {player2Score} pts</span>
+                            </div>
+                        </div>
+                        <div className={styles.navButtons}>
+                            <button className={styles.rulesButton} onClick={toggleRules}>
+                                {showRules ? 'Hide Rules' : 'Show Rules'}
+                            </button>
+                            <button className={styles.statsButton} onClick={toggleStats}>
+                                {showStats ? 'Hide Stats' : 'Show Stats'}
+                            </button>
+                        </div>
+                    </div>
+                    
+                    {showRules && (
+                        <div className={styles.rulesSection}>
+                            <h2>Game Rules:</h2>
+                            <p>In the Prisoner&apos;s Dilemma, two players must choose to either cooperate or defect:</p>
+                            <ul>
+                                <li>If both players cooperate, each receives 3 points.</li>
+                                <li>If both players defect, each receives 1 point.</li>
+                                <li>If one player cooperates and the other defects, the defector receives 5 points while the cooperator gets 0.</li>
+                            </ul>
+                            <p>This game is played in a &quot;hot seat&quot; style where players take turns on the same device.</p>
+                        </div>
+                    )}
+                    
+                    {showStats && (
+                        <div className={styles.statsSection}>
+                            <h2>Game Statistics:</h2>
+                            <div className={styles.statsGrid}>
+                                <div className={styles.statItem}>
+                                    <span className={styles.statLabel}>Total Rounds:</span>
+                                    <span className={styles.statValue}>{statistics.totalRoundsPlayed}</span>
+                                </div>
+                                <div className={styles.statItem}>
+                                    <span className={styles.statLabel}>Mutual Cooperation:</span>
+                                    <span className={styles.statValue}>{statistics.mutualCooperation} 
+                                        ({statistics.totalRoundsPlayed ? Math.round((statistics.mutualCooperation / statistics.totalRoundsPlayed) * 100) : 0}%)
+                                    </span>
+                                </div>
+                                <div className={styles.statItem}>
+                                    <span className={styles.statLabel}>Mutual Defection:</span>
+                                    <span className={styles.statValue}>{statistics.mutualDefection}
+                                        ({statistics.totalRoundsPlayed ? Math.round((statistics.mutualDefection / statistics.totalRoundsPlayed) * 100) : 0}%)
+                                    </span>
+                                </div>
+                                <div className={styles.statItem}>
+                                    <span className={styles.statLabel}>Player 1 Exploited:</span>
+                                    <span className={styles.statValue}>{statistics.player1Exploited}
+                                        ({statistics.totalRoundsPlayed ? Math.round((statistics.player1Exploited / statistics.totalRoundsPlayed) * 100) : 0}%)
+                                    </span>
+                                </div>
+                                <div className={styles.statItem}>
+                                    <span className={styles.statLabel}>Player 2 Exploited:</span>
+                                    <span className={styles.statValue}>{statistics.player2Exploited}
+                                        ({statistics.totalRoundsPlayed ? Math.round((statistics.player2Exploited / statistics.totalRoundsPlayed) * 100) : 0}%)
+                                    </span>
+                                </div>
+                                <div className={styles.statItem}>
+                                    <span className={styles.statLabel}>Avg. Points/Round:</span>
+                                    <span className={styles.statValue}>{statistics.averagePointsPerRound.toFixed(2)}</span>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+                    
+                    {gamePhase === 'player1' && (
+                        <div className={styles.playerTurn}>
+                            <h2>Player 1&apos;s Turn</h2>
+                            <p>Player 2, please look away from the screen!</p>
+                            <div className={styles.choiceButtons}>
+                                <button 
+                                    className={`${styles.choiceButton} ${styles.cooperateButton}`}
+                                    onClick={() => makeChoice('player1', 'cooperate')}
+                                >
+                                    Cooperate
+                                </button>
+                                <button 
+                                    className={`${styles.choiceButton} ${styles.defectButton}`}
+                                    onClick={() => makeChoice('player1', 'defect')}
+                                >
+                                    Defect
+                                </button>
+                            </div>
+                        </div>
+                    )}
+                    
+                    {gamePhase === 'player2' && (
+                        <div className={styles.playerTurn}>
+                            <h2>Player 2&apos;s Turn</h2>
+                            <p>Player 1, please look away from the screen!</p>
+                            <div className={styles.choiceButtons}>
+                                <button 
+                                    className={`${styles.choiceButton} ${styles.cooperateButton}`}
+                                    onClick={() => makeChoice('player2', 'cooperate')}
+                                >
+                                    Cooperate
+                                </button>
+                                <button 
+                                    className={`${styles.choiceButton} ${styles.defectButton}`}
+                                    onClick={() => makeChoice('player2', 'defect')}
+                                >
+                                    Defect
+                                </button>
+                            </div>
+                        </div>
+                    )}
+                    
+                    {gamePhase === 'results' && (
+                        <div className={styles.resultSection}>
+                            <h2 className={styles.resultTitle}>Round {round} Result:</h2>
+                            <div className={styles.choiceSummary}>
+                                <div className={`${styles.playerChoice} ${player1Choice === 'cooperate' ? styles.cooperateChoice : styles.defectChoice}`}>
+                                    Player 1: {player1Choice === 'cooperate' ? 'Cooperated' : 'Defected'}
+                                </div>
+                                <div className={`${styles.playerChoice} ${player2Choice === 'cooperate' ? styles.cooperateChoice : styles.defectChoice}`}>
+                                    Player 2: {player2Choice === 'cooperate' ? 'Cooperated' : 'Defected'}
+                                </div>
+                            </div>
+                            <p className={styles.resultText}>{result}</p>
+                            <div className={styles.actionButtons}>
+                                <button className={styles.nextButton} onClick={nextRound}>Next Round</button>
+                                <button className={styles.resetButton} onClick={resetGame}>Reset Game</button>
+                            </div>
+                        </div>
+                    )}
                 </div>
-            )}
+            </main>
             
-            {showStats && (
-                <div className={styles.statsSection}>
-                    <h2>Game Statistics:</h2>
-                    <div className={styles.statsGrid}>
-                        <div className={styles.statItem}>
-                            <span className={styles.statLabel}>Total Rounds:</span>
-                            <span className={styles.statValue}>{statistics.totalRoundsPlayed}</span>
-                        </div>
-                        <div className={styles.statItem}>
-                            <span className={styles.statLabel}>Mutual Cooperation:</span>
-                            <span className={styles.statValue}>{statistics.mutualCooperation} 
-                                ({statistics.totalRoundsPlayed ? Math.round((statistics.mutualCooperation / statistics.totalRoundsPlayed) * 100) : 0}%)
-                            </span>
-                        </div>
-                        <div className={styles.statItem}>
-                            <span className={styles.statLabel}>Mutual Defection:</span>
-                            <span className={styles.statValue}>{statistics.mutualDefection}
-                                ({statistics.totalRoundsPlayed ? Math.round((statistics.mutualDefection / statistics.totalRoundsPlayed) * 100) : 0}%)
-                            </span>
-                        </div>
-                        <div className={styles.statItem}>
-                            <span className={styles.statLabel}>Player 1 Exploited:</span>
-                            <span className={styles.statValue}>{statistics.player1Exploited}
-                                ({statistics.totalRoundsPlayed ? Math.round((statistics.player1Exploited / statistics.totalRoundsPlayed) * 100) : 0}%)
-                            </span>
-                        </div>
-                        <div className={styles.statItem}>
-                            <span className={styles.statLabel}>Player 2 Exploited:</span>
-                            <span className={styles.statValue}>{statistics.player2Exploited}
-                                ({statistics.totalRoundsPlayed ? Math.round((statistics.player2Exploited / statistics.totalRoundsPlayed) * 100) : 0}%)
-                            </span>
-                        </div>
-                        <div className={styles.statItem}>
-                            <span className={styles.statLabel}>Avg. Points/Round:</span>
-                            <span className={styles.statValue}>{statistics.averagePointsPerRound.toFixed(2)}</span>
-                        </div>
-                    </div>
-                </div>
-            )}
-            
-            {gamePhase === 'player1' && (
-                <div className={styles.playerTurn}>
-                    <h2>Player 1&apos;s Turn</h2>
-                    <p>Player 2, please look away from the screen!</p>
-                    <div className={styles.choiceButtons}>
-                        <button 
-                            className={`${styles.choiceButton} ${styles.cooperateButton}`}
-                            onClick={() => makeChoice('player1', 'cooperate')}
-                        >
-                            Cooperate
-                        </button>
-                        <button 
-                            className={`${styles.choiceButton} ${styles.defectButton}`}
-                            onClick={() => makeChoice('player1', 'defect')}
-                        >
-                            Defect
-                        </button>
-                    </div>
-                </div>
-            )}
-            
-            {gamePhase === 'player2' && (
-                <div className={styles.playerTurn}>
-                    <h2>Player 2&apos;s Turn</h2>
-                    <p>Player 1, please look away from the screen!</p>
-                    <div className={styles.choiceButtons}>
-                        <button 
-                            className={`${styles.choiceButton} ${styles.cooperateButton}`}
-                            onClick={() => makeChoice('player2', 'cooperate')}
-                        >
-                            Cooperate
-                        </button>
-                        <button 
-                            className={`${styles.choiceButton} ${styles.defectButton}`}
-                            onClick={() => makeChoice('player2', 'defect')}
-                        >
-                            Defect
-                        </button>
-                    </div>
-                </div>
-            )}
-            
-            {gamePhase === 'results' && (
-                <div className={styles.resultSection}>
-                    <h2 className={styles.resultTitle}>Round {round} Result:</h2>
-                    <div className={styles.choiceSummary}>
-                        <div className={`${styles.playerChoice} ${player1Choice === 'cooperate' ? styles.cooperateChoice : styles.defectChoice}`}>
-                            Player 1: {player1Choice === 'cooperate' ? 'Cooperated' : 'Defected'}
-                        </div>
-                        <div className={`${styles.playerChoice} ${player2Choice === 'cooperate' ? styles.cooperateChoice : styles.defectChoice}`}>
-                            Player 2: {player2Choice === 'cooperate' ? 'Cooperated' : 'Defected'}
-                        </div>
-                    </div>
-                    <p className={styles.resultText}>{result}</p>
-                    <div className={styles.actionButtons}>
-                        <button className={styles.nextButton} onClick={nextRound}>Next Round</button>
-                        <button className={styles.resetButton} onClick={resetGame}>Reset Game</button>
-                    </div>
-                </div>
-            )}
-        </div>
+            {/* Footer */}
+            <footer className={styles.gameFooter}>
+                <Link href="https://www.instagram.com/vincedurko/" className="hover:opacity-80 transition-opacity">
+                    <p>© {currentYear} <span className="font-medium">polymons</span></p>
+                </Link>
+            </footer>
+        </>
+    );
+};
+
+const Game = () => {
+    return (
+        <LanguageProvider>
+            <GameContent />
+        </LanguageProvider>
     );
 };
 
