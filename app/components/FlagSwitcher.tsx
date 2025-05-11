@@ -2,7 +2,6 @@
 "use client";
 import React from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
-import Image from 'next/image';
 import firebaseService from '../services/firebaseService';
 import styles from '../styles/FlagSwitcher.module.css';
 
@@ -14,7 +13,7 @@ const FlagSwitcher: React.FC = () => {
     firebaseService.logLanguageChange(newLanguage);
     toggleLanguage();
   };  return (
-    <div className={styles.switchContainer}>      <Image
+    <div className={styles.switchContainer}>      <img
         src="/uk-flag.png"
         alt="English"
         width={24}
@@ -23,7 +22,7 @@ const FlagSwitcher: React.FC = () => {
         onClick={handleLanguageChange}
         title="Switch to English"
       />
-      <Image
+      <img
         src="/hu-flag.png"
         alt="Hungarian"
         width={24}
