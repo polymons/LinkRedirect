@@ -6,12 +6,11 @@ import styles from '../styles/Home.module.css';
 
 const HeaderLogo: React.FC = () => {
   return (
-    <Link href="/" className={styles.headerLogo}>      <Image
+    <Link href="/" className={styles.headerLogo}>      <img
         src="/SKR_Logo_RGB_Yellow.webp"
         alt="Stop Killer Robots"
         width={30}
         height={30}
-        priority
       />
     </Link>
   );

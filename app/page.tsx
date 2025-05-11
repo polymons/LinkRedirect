@@ -6,7 +6,6 @@ import firebaseService from "./services/firebaseService";
 import { useLanguage } from "./contexts/LanguageContext";
 import styles from "./styles/Home.module.css";
 import SocialMediaButton from "./components/SocialMediaButton";
-import Image from "next/image";
 
 const linkRedirectLinks: {
 	name: { en: string; hu: string };
@@ -84,7 +83,7 @@ const Home: React.FC = () => {
 			<main className="flex flex-col items-center min-h-screen p-0 pb-12 w-full box-border overflow-x-hidden">
 				<div className={styles.container}>
 					<Link href="https://www.stopkillerrobots.org/" className="self-center mb-6">
-						<Image
+						<img
 							src="/skr512.png"
 							alt="SKR Logo"
 							width={180}
