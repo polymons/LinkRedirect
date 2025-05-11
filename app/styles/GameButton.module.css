@@ -1,0 +1,22 @@
+.gameButton {
+  display: flex;
+  align-items: left;
+  justify-content: left;
+  text-align: left;
+  color: yellow;
+  font-weight: 600;
+  padding: 0.4rem 0.9rem;
+  border-radius: 8px;
+  border: 1px solid yellow;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  text-decoration: none;
+  margin-right: 0.75rem;
+}
+
+.gameButton:hover {
+  background-color: yellow;
+  color: #222;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}

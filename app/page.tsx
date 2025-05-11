@@ -4,6 +4,7 @@ import LinkRedirectButton from "./components/LinkRedirectButton";
 import Link from "next/link";
 import firebaseService from "./services/firebaseService";
 import FlagSwitcher from "./components/FlagSwitcher";
+import GameButton from "./components/GameButton";
 import { useLanguage } from "./contexts/LanguageContext";
 import styles from "./styles/Home.module.css";
 import SocialMediaButton from "./components/SocialMediaButton";
@@ -23,17 +24,16 @@ const linkRedirectLinks: {
 		name: { en: "Digital Dehumanization", hu: "Digitális dehumanizáció" },
 		url: "https://www.stopkillerrobots.org/stop-killer-robots/digital-dehumanisation/",
 		id: "digitexhibition",
-	},
-	{
+	},	{
 		name: { en: "Youth poll", hu: "Ifjúsági felmérés" },
 		url: "https://docs.google.com/forms/d/e/1FAIpQLSfmqdrOWCP_KrE4S_j1VwqQ2aXFUCrEqFSNEnqlUaqhEXDQSg/viewform?usp=sf_link",
 		id: "youthpoll",
 	},
-/* 	{
+	{
 		name: { en: "Game", hu: "Játék" },
 		url: "/game",
 		id: "playgame",
-	}, */
+	},
 ];
 
 const SocialMediaButtons: {
@@ -88,12 +88,13 @@ const Home: React.FC = () => {
 	const { language } = useLanguage();
 	return (
 		<main className="flex flex-col items-center min-h-screen p-0 md:p-8 lg:p-12 pb-20">
-			<div className={styles.container}>
-				<div className={styles.header}>
-					<FlagSwitcher />
-				</div>
-				<Link href="https://www.stopkillerrobots.org/" className="self-center mb-6 mt-2">
-					<img
+			<div className={styles.container}>				<div className={styles.header}>
+					<div className={styles.headerControls}>
+						<GameButton />
+						<FlagSwitcher />
+					</div>
+				</div>				<Link href="https://www.stopkillerrobots.org/" className="self-center mb-6 mt-2">
+					<Image
 						src="/skr512.png"
 						alt="SKR Logo"
 						width={180}

@@ -13,11 +13,10 @@ const FlagSwitcher: React.FC = () => {
     const newLanguage = language === 'en' ? 'hu' : 'en';
     firebaseService.logLanguageChange(newLanguage);
     toggleLanguage();
-  };
-  return (
+  };  return (
     <div className="flex gap-2">
       <span className={styles.languageSwitch}>
-        <img
+        <Image
           src="/uk-flag.png"
           alt="English"
           width={50}
@@ -26,7 +25,7 @@ const FlagSwitcher: React.FC = () => {
           onClick={handleLanguageChange}
           title="Switch to English"
         />
-        <img
+        <Image
           src="/hu-flag.png"
           alt="Hungarian"
           width={50}
