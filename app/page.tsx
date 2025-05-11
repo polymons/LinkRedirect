@@ -5,6 +5,7 @@ import Link from "next/link";
 import firebaseService from "./services/firebaseService";
 import FlagSwitcher from "./components/FlagSwitcher";
 import GameButton from "./components/GameButton";
+import HeaderLogo from "./components/HeaderLogo";
 import { useLanguage } from "./contexts/LanguageContext";
 import styles from "./styles/Home.module.css";
 import SocialMediaButton from "./components/SocialMediaButton";
@@ -86,22 +87,27 @@ const Home: React.FC = () => {
 	};
 
 	const { language } = useLanguage();
-	return (
-		<main className="flex flex-col items-center min-h-screen p-0 md:p-8 lg:p-12 pb-20">
-			<div className={styles.container}>				<div className={styles.header}>
-					<div className={styles.headerControls}>
-						<GameButton />
-						<FlagSwitcher />
-					</div>
-				</div>				<Link href="https://www.stopkillerrobots.org/" className="self-center mb-6 mt-2">
-					<Image
-						src="/skr512.png"
-						alt="SKR Logo"
-						width={180}
-						height={180}
-						className={styles.qrCode}
-					/>
-				</Link>
+		return (
+		<>
+			<div className={styles.header}>
+				<HeaderLogo />
+				<div className={styles.headerControls}>
+					<GameButton />
+					<FlagSwitcher />
+				</div>
+			</div>
+			
+			<main className="flex flex-col items-center min-h-screen p-0 md:p-4 lg:p-6 pb-12">
+				<div className={styles.container}>
+					<Link href="https://www.stopkillerrobots.org/" className="self-center mb-6">
+						<Image
+							src="/skr512.png"
+							alt="SKR Logo"
+							width={180}
+							height={180}
+							className={styles.qrCode}
+						/>
+					</Link>
 
 				<div className={styles.buttonContainer}>
 					{linkRedirectLinks.map((link) => (
@@ -118,8 +124,7 @@ const Home: React.FC = () => {
 					{SocialMediaButtons.map((button) => (
 						<SocialMediaButton
 							key={button.id}
-							name={button.name}
-							url={button.url[language]}
+							name={button.name}							url={button.url[language]}
 							id={button.id}
 						/>
 					))}
@@ -139,8 +144,9 @@ const Home: React.FC = () => {
 						Campaign
 					</Link>
 				</div> */}
-			</div>
-		</main>
+				</div>
+			</main>
+		</>
 	);
 };
 

@@ -4,7 +4,7 @@ import React from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import Image from 'next/image';
 import firebaseService from '../services/firebaseService';
-import styles from '../styles/Home.module.css';
+import styles from '../styles/FlagSwitcher.module.css';
 
 const FlagSwitcher: React.FC = () => {
   const { language, toggleLanguage } = useLanguage();
@@ -14,27 +14,24 @@ const FlagSwitcher: React.FC = () => {
     firebaseService.logLanguageChange(newLanguage);
     toggleLanguage();
   };  return (
-    <div className="flex gap-2">
-      <span className={styles.languageSwitch}>
-        <Image
-          src="/uk-flag.png"
-          alt="English"
-          width={50}
-          height={40}
-          className={language === 'en' ? styles.activeLang : ''}
-          onClick={handleLanguageChange}
-          title="Switch to English"
-        />
-        <Image
-          src="/hu-flag.png"
-          alt="Hungarian"
-          width={50}
-          height={40}
-          className={language === 'hu' ? styles.activeLang : ''}
-          onClick={handleLanguageChange}
-          title="Váltás magyarra"
-        />
-      </span>
+    <div className={styles.switchContainer}>      <Image
+        src="/uk-flag.png"
+        alt="English"
+        width={24}
+        height={18}
+        className={`${styles.flagImage} ${language === 'en' ? styles.activeFlag : ''}`}
+        onClick={handleLanguageChange}
+        title="Switch to English"
+      />
+      <Image
+        src="/hu-flag.png"
+        alt="Hungarian"
+        width={24}
+        height={18}
+        className={`${styles.flagImage} ${language === 'hu' ? styles.activeFlag : ''}`}
+        onClick={handleLanguageChange}
+        title="Váltás magyarra"
+      />
     </div>
   );
 };
