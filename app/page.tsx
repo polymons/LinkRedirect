@@ -87,12 +87,12 @@ const Home: React.FC = () => {
 
 	const { language } = useLanguage();
 	return (
-		<main className="flex flex-col items-center min-h-screen p-4 md:p-8 lg:p-12 pb-20">
+		<main className="flex flex-col items-center min-h-screen p-0 md:p-8 lg:p-12 pb-20">
 			<div className={styles.container}>
 				<div className={styles.header}>
 					<FlagSwitcher />
 				</div>
-						<Link href="https://www.stopkillerrobots.org/" className="self-center mb-6 mt-4">
+				<Link href="https://www.stopkillerrobots.org/" className="self-center mb-6 mt-2">
 					<Image
 						src="/skr512.png"
 						alt="SKR Logo"
@@ -125,7 +125,7 @@ const Home: React.FC = () => {
 					))}
 				</div>
 
-				<div className={styles.linkContainer}>
+				{/* <div className={styles.linkContainer}>
 					<Link
 						href="https://www.stopkillerrobots.org/frequently-asked-questions/"
 						className={styles.footerLink}
@@ -138,7 +138,7 @@ const Home: React.FC = () => {
 					>
 						Campaign
 					</Link>
-				</div>
+				</div> */}
 			</div>
 		</main>
 	);

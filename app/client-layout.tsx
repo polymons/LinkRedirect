@@ -17,7 +17,8 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
     <>
       <LanguageProvider>
         {children}
-      </LanguageProvider>      <footer>
+      </LanguageProvider>      
+      <footer>
         <Link href="https://www.instagram.com/vincedurko/" className="hover:opacity-80 transition-opacity">
           <p>© {currentYear} <span className="font-medium">polymons</span></p>
         </Link>

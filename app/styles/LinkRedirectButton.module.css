@@ -10,6 +10,7 @@
   align-items: center;
   font-size: 1.125rem;
   font-weight: 600;
+  text-align: left;
   background-image: linear-gradient(to right, var(--primary-color) 50%, var(--secondary-color) 50%);
   background-size: 200% 100%; /* Double the background size for the swipe effect */
   background-position: right bottom; /* Start with the yellow off-screen */
@@ -17,7 +18,7 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: relative;
   overflow: hidden;
-  max-width: 400px;
+  max-width: 300px;
   margin: 0 auto;
 }
 
