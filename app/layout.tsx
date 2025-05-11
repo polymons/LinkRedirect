@@ -54,13 +54,14 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">      <head>
         <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no" />
         <meta name="google" content="notranslate" />
-      </head>
-      <body className={inter.className} suppressHydrationWarning={true}>
-        <ClientLayout>
-          {children}
-        </ClientLayout>
+      </head><body className={inter.className} suppressHydrationWarning={true}>
+        <div className="app-container">
+          <ClientLayout>
+            {children}
+          </ClientLayout>
+        </div>
       </body>
     </html>
   );

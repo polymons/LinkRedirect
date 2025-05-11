@@ -23,6 +23,7 @@
     width: 100%;
     padding-top: 0.5rem;
     box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 .header {
@@ -37,6 +38,8 @@
     top: 0;
     z-index: 100;
     margin-bottom: 1rem;
+    max-width: var(--max-width);
+    box-sizing: border-box;
 }
 
 .headerControls {
@@ -63,13 +66,20 @@
     flex-direction: column;
     gap: 1rem;
     width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 .socialContainer {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 1rem;
     margin: 1.5rem 0;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 .linkContainer {

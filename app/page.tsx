@@ -77,10 +77,9 @@ const Home: React.FC = () => {
 		return id;
 	};
 
-	const { language } = useLanguage();
-	return (
+	const { language } = useLanguage();	return (
 		<>
-			<main className="flex flex-col items-center min-h-screen p-0 pb-12 w-full box-border overflow-x-hidden">
+			<main className="flex flex-col items-center min-h-screen p-0 pb-12 w-full box-border overflow-x-hidden max-w-full">
 				<div className={styles.container}>
 					<Link href="https://www.stopkillerrobots.org/" className="self-center mb-6">
 						<img
