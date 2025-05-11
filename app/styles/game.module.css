@@ -1,566 +1,324 @@
+/* High-contrast clean design for the Prisoner's Dilemma game */
+
 .mainContent {
+  min-height: 100vh;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: calc(100vh - 100px);
-  width: 100%;
-  padding: 0.5rem;
+  background: black;
 }
 
 .gameContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding: 1rem;
   width: 100%;
   max-width: 800px;
-  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: var(--border-radius);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  margin-bottom: 4rem;
+  overflow: hidden;
 }
 
 .gameTitle {
-  font-size: 1.8rem;
-  margin-bottom: 1.25rem;
-  color: #333;
+  font-size: 2.5rem;
+  font-weight: 700;
   text-align: center;
-  width: 100%;
+  margin-bottom: 1.5rem;
+  color: var(--secondary-color);
+  border-bottom: 4px solid var(--primary-color);
+  padding-bottom: 0.75rem;
 }
 
-@media (min-width: 768px) {
-  .mainContent {
-    padding: 1rem;
-  }
-  
-  .gameContainer {
-    padding: 2rem;
-  }
-  
-  .gameTitle {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-  }
-}
-
-.playerSection {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin-bottom: 1rem;
-}
-
-.inputGroup {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1rem;
-}
-
-.inputLabel {
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-}
-
-.inputField {
-  padding: 0.75rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 1rem;
-}
-
-.playButton {
-  background-color: black;
-  color: yellow;
-  padding: 10px 20px;
-  border: 2px solid yellow;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  margin: 1rem 0;
-  transition: background-color 0.2s, color 0.2s;
-}
-
-.playButton:hover {
-  background-color: yellow;
-  color: black;
-}
-
-.resultSection {
-  margin-top: 1rem;
-  padding: 1rem;
-  border-radius: 8px;
-  background-color: #f5f5f5;
-  width: 100%;
-  text-align: center;
-}
-
-.resultTitle {
-  font-size: 1.25rem;
-  margin-bottom: 0.5rem;
-}
-
-@media (min-width: 768px) {
-  .resultSection {
-    margin-top: 2rem;
-  }
-  
-  .resultTitle {
-    font-size: 1.5rem;
-  }
-}
-
-/* New styles for the enhanced game */
+/* Navigation and Scoreboard */
 .gameNav {
   display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin-bottom: 1rem;
-  background-color: #f5f5f5;
-  padding: 0.75rem;
-  border-radius: 8px;
-  gap: 0.75rem;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .scoreboard {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.5rem;
-  width: 100%;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .scoreItem {
-  font-weight: 600;
-  font-size: 0.9rem;
-  text-align: center;
-  background-color: rgba(255, 255, 255, 0.5);
-  padding: 0.5rem;
-  border-radius: 4px;
+  background-color: #ffffff;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  font-weight: 700;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid var(--primary-color);
+  color: #111827; /* Dark gray for better contrast */
 }
 
 .navButtons {
   display: flex;
-  justify-content: space-between;
-  gap: 0.5rem;
-  width: 100%;
-}
-
-@media (min-width: 768px) {
-  .gameNav {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  .scoreboard {
-    display: flex;
-    width: auto;
-    gap: 1.5rem;
-  }
-  
-  .scoreItem {
-    font-size: 1.1rem;
-    background-color: transparent;
-    padding: 0;
-  }
-  
-  .navButtons {
-    width: auto;
-  }
+  gap: 0.75rem;
 }
 
 .rulesButton, .statsButton {
-  background-color: #333;
-  color: white;
-  border: none;
-  padding: 0.5rem;
-  border-radius: 4px;
-  cursor: pointer;
+  background-color: #ffffff;
+  color: var(--secondary-color);
+  border: 2px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
   font-weight: 600;
-  transition: background-color 0.2s;
-  flex: 1;
-  font-size: 0.9rem;
-  text-align: center;
+  transition: all var(--transition-speed) ease;
 }
 
 .rulesButton:hover, .statsButton:hover {
-  background-color: #555;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
 }
 
-.rulesButton:active, .statsButton:active {
-  transform: scale(0.98);
-}
-
-.statsButton {
-  background-color: #2196f3;
-}
-
-.statsButton:hover {
-  background-color: #1976d2;
-}
-
-.rulesSection {
-  background-color: #f9f9f9;
-  padding: 0.75rem;
+/* Rules and Stats Sections */
+.rulesSection, .statsSection {
+  background-color: #ffffff;
+  padding: 1.5rem;
   border-radius: 8px;
-  margin-bottom: 1rem;
-  border-left: 4px solid #333;
-  width: 100%;
-  font-size: 0.9rem;
+  margin-bottom: 2rem;
+  border-left: 6px solid var(--primary-color);
+  color: #1f2937; /* Ensuring text has good contrast */
 }
 
-.rulesSection h2 {
+.rulesSection h2, .statsSection h2 {
   margin-top: 0;
-  color: #333;
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
+  color: var(--secondary-color);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
 }
 
 .rulesSection ul {
-  margin-left: 1rem;
-  padding-left: 0.5rem;
+  padding-left: 1.25rem;
 }
 
-.rulesSection p, .rulesSection li {
+.rulesSection li {
   margin-bottom: 0.5rem;
 }
 
-@media (min-width: 768px) {
-  .rulesButton, .statsButton {
-    padding: 0.5rem 1rem;
-    flex: 0 1 auto;
-    font-size: 1rem;
-  }
-  
-  .rulesSection {
-    padding: 1rem;
-    margin-bottom: 1.5rem;
-    font-size: 1rem;
-  }
-  
-  .rulesSection h2 {
-    font-size: 1.4rem;
-    margin-bottom: 0.75rem;
-  }
-  
-  .rulesSection ul {
-    margin-left: 1.5rem;
-  }
-}
-
-.playerTurn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  padding: 1rem;
-  background-color: #f5f5f5;
-  border-radius: 8px;
-}
-
-.playerTurn h2 {
-  font-size: 1.3rem;
-  margin-bottom: 0.5rem;
-}
-
-.playerTurn p {
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
-}
-
-.choiceButtons {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  margin-top: 0.5rem;
-  width: 100%;
-  max-width: 320px;
-}
-
-.choiceButton {
-  padding: 1.2rem 0;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.2s;
-  width: 100%;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.choiceButton:active {
-  transform: scale(0.98);
-}
-
-.cooperateButton {
-  background-color: #4caf50;
-  color: white;
-  border: 2px solid #4caf50;
-}
-
-.cooperateButton:hover {
-  background-color: #388e3c;
-}
-
-.defectButton {
-  background-color: #f44336;
-  color: white;
-  border: 2px solid #f44336;
-}
-
-.defectButton:hover {
-  background-color: #d32f2f;
-}
-
-@media (min-width: 768px) {
-  .playerTurn {
-    padding: 1.5rem;
-  }
-  
-  .playerTurn h2 {
-    font-size: 1.5rem;
-  }
-  
-  .playerTurn p {
-    font-size: 1rem;
-  }
-  
-  .choiceButtons {
-    flex-direction: row;
-    gap: 1.5rem;
-    margin-top: 1rem;
-  }
-  
-  .choiceButton {
-    padding: 1rem 2rem;
-    font-size: 1.2rem;
-    width: auto;
-  }
-}
-
-.choiceSummary {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  width: 100%;
-  margin: 0.75rem 0;
-}
-
-.playerChoice {
-  padding: 0.75rem 0.75rem;
-  border-radius: 8px;
-  font-weight: 600;
-  width: 100%;
-  text-align: center;
-  font-size: 0.9rem;
-}
-
-.cooperateChoice {
-  background-color: rgba(76, 175, 80, 0.2);
-  color: #388e3c;
-  border: 1px solid #4caf50;
-}
-
-.defectChoice {
-  background-color: rgba(244, 67, 54, 0.2);
-  color: #d32f2f;
-  border: 1px solid #f44336;
-}
-
-.resultText {
-  font-size: 1rem;
-  margin: 0.75rem 0;
-  line-height: 1.4;
-}
-
-.actionButtons {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.5rem;
-  margin-top: 0.75rem;
-  width: 100%;
-}
-
-@media (min-width: 480px) {
-  .choiceSummary {
-    flex-direction: row;
-    justify-content: space-around;
-    margin: 1rem 0;
-  }
-  
-  .playerChoice {
-    width: 47%;
-    font-size: 1rem;
-  }
-  
-  .actionButtons {
-    display: flex;
-    justify-content: center;
-    width: auto;
-  }
-}
-
-@media (min-width: 768px) {
-  .resultText {
-    font-size: 1.2rem;
-    margin: 1rem 0;
-  }
-  
-  .actionButtons {
-    gap: 1rem;
-    margin-top: 1rem;
-  }
-  
-  .playerChoice {
-    padding: 0.75rem 1.5rem;
-  }
-}
-
-.nextButton, .resetButton {
-  padding: 0.75rem 1rem;
-  font-weight: 600;
-  border-radius: 8px;
-  cursor: pointer;
-  width: 100%;
-  font-size: 0.95rem;
-  transition: all 0.2s;
-}
-
-.nextButton:active, .resetButton:active {
-  transform: scale(0.98);
-}
-
-.nextButton {
-  background-color: #2196f3;
-  color: white;
-  border: 2px solid #2196f3;
-}
-
-.nextButton:hover {
-  background-color: #1976d2;
-}
-
-.resetButton {
-  background-color: #9e9e9e;
-  color: white;
-  border: 2px solid #9e9e9e;
-}
-
-.resetButton:hover {
-  background-color: #757575;
-}
-
-@media (min-width: 480px) {
-  .nextButton, .resetButton {
-    width: auto;
-    min-width: 120px;
-  }
-}
-
-@media (min-width: 768px) {
-  .nextButton, .resetButton {
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    min-width: 140px;
-  }
-}
-
-/* Statistics Section */
-.statsSection {
-  background-color: #f0f8ff;
-  padding: 0.75rem;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-  border-left: 4px solid #2196f3;
-  width: 100%;
-}
-
-.statsSection h2 {
-  margin-top: 0;
-  color: #1976d2;
-  margin-bottom: 0.75rem;
-  font-size: 1.2rem;
-}
-
+/* Stats Grid */
 .statsGrid {
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: 0.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
 }
 
 .statItem {
-  background-color: white;
+  background-color: #ffffff;
+  padding: 0.75rem 1rem;
   border-radius: 6px;
-  padding: 0.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .statLabel {
   font-weight: 600;
-  color: #333;
-  font-size: 0.9rem;
 }
 
 .statValue {
-  font-family: monospace;
-  font-size: 0.9rem;
-  color: #1976d2;
-  background-color: #e3f2fd;
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-  word-break: break-word;
-  text-align: center;
+  color: #1e40af; /* Darker blue for better contrast */
+  font-weight: 700;
 }
 
-/* Footer styles */
-.gameFooter {
-  width: 100%;
+/* Player Turn */
+.playerTurn {
   text-align: center;
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border-radius: 8px;
+  border: 2px solid var(--secondary-color);
+  margin-bottom: 2rem;
+  color: #111827;
+}
+
+.playerTurn h2 {
+  color: var(--secondary-color);
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+.playerTurn p {
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #b91c1c; /* Slightly darker red for better contrast on light backgrounds */
+}
+
+/* Choice Buttons */
+.choiceButtons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.choiceButton {
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  transition: all var(--transition-speed) ease;
+  border: none;
+  color: #fff;
+  min-width: 180px;
+}
+
+.cooperateButton {
+  background-color: #059669; /* Green */
+  box-shadow: 0 4px 0 #047857;
+}
+
+.cooperateButton:hover {
+  background-color: #047857;
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #065f46;
+}
+
+.defectButton {
+  background-color: #dc2626; /* Red */
+  box-shadow: 0 4px 0 #b91c1c;
+}
+
+.defectButton:hover {
+  background-color: #b91c1c;
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #991b1b;
+}
+
+/* Results Section */
+.resultSection {
+  text-align: center;
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border-radius: 8px;
+  border: 2px solid var(--secondary-color);
+  color: #111827;
+}
+
+.resultTitle {
+  font-size: 1.75rem;
+  color: var(--secondary-color);
+  margin-bottom: 1.5rem;
+}
+
+.choiceSummary {
+  display: flex;
+  justify-content: space-around;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.playerChoice {
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  color: #fff;
+  min-width: 200px;
+}
+
+.cooperateChoice {
+  background-color: #059669;
+}
+
+.defectChoice {
+  background-color: #dc2626;
+}
+
+.resultText {
+  font-size: 1.25rem;
+  margin: 1.5rem 0;
   padding: 1rem;
-  margin-top: auto;
-  font-size: 0.85rem;
-  color: #666;
-  border-top: 1px solid #eee;
+  background-color: #fff;
+  border-radius: 6px;
+  border: 2px dashed var(--primary-color);
+  font-weight: 600;
 }
 
-@media (min-width: 480px) {
-  .statsGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+/* Action Buttons */
+.actionButtons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
 }
 
-@media (min-width: 768px) {
-  .statsSection {
-    padding: 1rem;
-    margin-bottom: 1.5rem;
+.nextButton, .resetButton {
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all var(--transition-speed) ease;
+}
+
+.nextButton {
+  background-color: var(--primary-color);
+  color: #000000; /* Ensuring black text on yellow background */
+  border: 2px solid #000000;
+  font-weight: 700;
+}
+
+.nextButton:hover {
+  background-color: #e6c800;
+}
+
+.resetButton {
+  background-color: #ffffff;
+  color: #4b5563; /* Darker gray for better contrast */
+  border: 2px solid #4b5563;
+}
+
+.resetButton:hover {
+  background-color: #4b5563;
+  color: #fff;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+  .gameContainer {
+    padding: 1.5rem;
   }
   
-  .statsSection h2 {
-    font-size: 1.4rem;
-    margin-bottom: 1rem;
+  .gameTitle {
+    font-size: 2rem;
   }
   
-  .statsGrid {
-    grid-template-columns: repeat(3, 1fr);
+  .gameNav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .scoreboard {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .navButtons {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .choiceButtons {
+    flex-direction: column;
     gap: 1rem;
   }
   
-  .statItem {
-    padding: 0.75rem;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+  .choiceButton {
+    width: 100%;
   }
   
-  .statLabel {
-    font-size: 1rem;
+  .choiceSummary {
+    flex-direction: column;
   }
   
-  .statValue {
-    font-size: 1rem;
+  .playerChoice {
+    width: 100%;
   }
 }

@@ -3,9 +3,6 @@ import React, { useEffect } from "react";
 import LinkRedirectButton from "./components/LinkRedirectButton";
 import Link from "next/link";
 import firebaseService from "./services/firebaseService";
-import FlagSwitcher from "./components/FlagSwitcher";
-import GameButton from "./components/GameButton";
-import HeaderLogo from "./components/HeaderLogo";
 import { useLanguage } from "./contexts/LanguageContext";
 import styles from "./styles/Home.module.css";
 import SocialMediaButton from "./components/SocialMediaButton";
@@ -29,12 +26,7 @@ const linkRedirectLinks: {
 		name: { en: "Youth poll", hu: "Ifjúsági felmérés" },
 		url: "https://docs.google.com/forms/d/e/1FAIpQLSfmqdrOWCP_KrE4S_j1VwqQ2aXFUCrEqFSNEnqlUaqhEXDQSg/viewform?usp=sf_link",
 		id: "youthpoll",
-	},
-	{
-		name: { en: "Game", hu: "Játék" },
-		url: "/game",
-		id: "playgame",
-	},
+	}
 ];
 
 const SocialMediaButtons: {
@@ -89,14 +81,6 @@ const Home: React.FC = () => {
 	const { language } = useLanguage();
 		return (
 		<>
-			<div className={styles.header}>
-				<HeaderLogo />
-				<div className={styles.headerControls}>
-					<GameButton />
-					<FlagSwitcher />
-				</div>
-			</div>
-			
 			<main className="flex flex-col items-center min-h-screen p-0 md:p-4 lg:p-6 pb-12">
 				<div className={styles.container}>
 					<Link href="https://www.stopkillerrobots.org/" className="self-center mb-6">

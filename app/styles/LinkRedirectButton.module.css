@@ -20,6 +20,7 @@
   overflow: hidden;
   max-width: 300px;
   margin: 0 auto;
+  text-decoration: none;
 }
 
 .redirectButton:hover {

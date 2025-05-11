@@ -80,7 +80,7 @@
 
 .footerLink {
     color: var(--accent-color);
-    text-decoration: underline;
+    /* text-decoration: underline; */
     font-weight: 500;
     transition: all var(--transition-speed);
 }
