@@ -4,13 +4,15 @@ import "./styles/globals.css";
 import { LanguageProvider } from './contexts/LanguageContext';
 import Link from 'next/link';
 import ClientLayout from './client-layout';
+import type { Metadata } from "next";
 
 const inter = Inter({ subsets: ["latin"] });
 
 // Metadata can only be exported from a server component (not a client component)
-export const metadata = {
-  title: "Link redirect",
-  description: "A simple link redirect page",
+export const metadata: Metadata = {
+  title: "SKR - Stop Killer Robots",
+  description: "Stop Killer Robots Campaign - Leading the call for new international law on autonomy in weapons systems",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "https://skrlinkredirect.web.app/"),
   icons: [
     {
       rel: "icon",
