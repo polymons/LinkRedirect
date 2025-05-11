@@ -86,58 +86,59 @@ const Home: React.FC = () => {
 	};
 
 	const { language } = useLanguage();
-
 	return (
-		<main className="flex flex-col items-center justify-between p-6 md:p-24 min-h-screen gap-5">
-			<FlagSwitcher />
-			<Link href="https://www.stopkillerrobots.org/">
-				<img
-					src="/skr512.png"
-					alt="SKR Logo"
-					width={220}
-					height={220}
-					loading="lazy"
-					className={styles.qrCode}
-				/>
-			</Link>
-
-			<div className="flex flex-col gap-5">
-				{linkRedirectLinks.map((link) => (
-					<LinkRedirectButton
-						key={link.id}
-						id={link.id}
-						name={link.name[language]}
-						url={link.url}
+		<main className="flex flex-col items-center min-h-screen p-4 md:p-8 lg:p-12 pb-20">
+			<div className={styles.container}>
+				<div className={styles.header}>
+					<FlagSwitcher />
+				</div>
+						<Link href="https://www.stopkillerrobots.org/" className="self-center mb-6 mt-4">
+					<Image
+						src="/skr512.png"
+						alt="SKR Logo"
+						width={180}
+						height={180}
+						priority
+						className={styles.qrCode}
 					/>
-				))}
-			</div>
-
-
-			<div className="flex flex-row gap-5">
-				{SocialMediaButtons.map((button) => (
-					<SocialMediaButton
-						key={button.id}
-						name={button.name}
-						url={button.url[language]}
-						id={button.id}
-					/>
-				))}
-			</div>
-
-
-			<div className="flex flex-row gap-5">
-				<Link
-					href="https://www.stopkillerrobots.org/frequently-asked-questions/"
-					className="text-blue-500 underline hover:text-blue-700"
-				>
-					FAQ
 				</Link>
-				<Link
-					href="https://www.stopkillerrobots.org/"
-					className="text-blue-500 underline hover:text-blue-700"
-				>
-					Campaign
-				</Link>
+
+				<div className={styles.buttonContainer}>
+					{linkRedirectLinks.map((link) => (
+						<LinkRedirectButton
+							key={link.id}
+							id={link.id}
+							name={link.name[language]}
+							url={link.url}
+						/>
+					))}
+				</div>
+
+				<div className={styles.socialContainer}>
+					{SocialMediaButtons.map((button) => (
+						<SocialMediaButton
+							key={button.id}
+							name={button.name}
+							url={button.url[language]}
+							id={button.id}
+						/>
+					))}
+				</div>
+
+				<div className={styles.linkContainer}>
+					<Link
+						href="https://www.stopkillerrobots.org/frequently-asked-questions/"
+						className={styles.footerLink}
+					>
+						FAQ
+					</Link>
+					<Link
+						href="https://www.stopkillerrobots.org/"
+						className={styles.footerLink}
+					>
+						Campaign
+					</Link>
+				</div>
 			</div>
 		</main>
 	);

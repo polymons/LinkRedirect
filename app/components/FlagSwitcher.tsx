@@ -14,26 +14,27 @@ const FlagSwitcher: React.FC = () => {
     firebaseService.logLanguageChange(newLanguage);
     toggleLanguage();
   };
-
   return (
     <div className="flex gap-2">
       <span className={styles.languageSwitch}>
-       <img
-        src="/uk-flag.png"
-        alt="English"
-        width={50}
-        height={40}
-        className={language === 'en' ? 'border-4 border-blue-600' : ''}
-        onClick={handleLanguageChange}
-      />
-      <img
-        src="/hu-flag.png"
-        alt="Hungarian"
-        width={50}
-        height={40}
-        className={language === 'hu' ? 'border-4 border-blue-600' : ''}
-        onClick={handleLanguageChange}
-      />
+        <img
+          src="/uk-flag.png"
+          alt="English"
+          width={50}
+          height={40}
+          className={language === 'en' ? styles.activeLang : ''}
+          onClick={handleLanguageChange}
+          title="Switch to English"
+        />
+        <img
+          src="/hu-flag.png"
+          alt="Hungarian"
+          width={50}
+          height={40}
+          className={language === 'hu' ? styles.activeLang : ''}
+          onClick={handleLanguageChange}
+          title="Váltás magyarra"
+        />
       </span>
     </div>
   );

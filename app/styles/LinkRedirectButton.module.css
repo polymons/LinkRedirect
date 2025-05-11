@@ -1,35 +1,48 @@
 .redirectButton {
-  background-color: black;
-  color: yellow;
-  padding: 10px 20px;
-  border: 2px solid yellow;
-  border-radius: 15px;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  padding: 14px 24px;
+  border: 2px solid var(--primary-color);
+  border-radius: var(--border-radius);
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 1rem;
+  font-size: 1.125rem;
   font-weight: 600;
-  background-image: linear-gradient(to right, yellow 50%, black 50%);
+  background-image: linear-gradient(to right, var(--primary-color) 50%, var(--secondary-color) 50%);
   background-size: 200% 100%; /* Double the background size for the swipe effect */
   background-position: right bottom; /* Start with the yellow off-screen */
-  transition: background-color 0.2s, color 0.2s, background-position 0.2s ease-out;
+  transition: all var(--transition-speed) ease-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  max-width: 400px;
+  margin: 0 auto;
 }
 
 .redirectButton:hover {
-  background-color: yellow;
-  color: black;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
   background-position: left bottom; /* Swipe the yellow on-screen */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.redirectButton:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .redirectButton:hover .arrow {
-  color: black;
+  color: var(--secondary-color);
   font-weight: bold;
-  transform: scale(1.2);
+  transform: translateX(4px) scale(1.2);
 }
 
 .arrow {
-  align-self: flex-end;
+  align-self: center;
   padding-left: 20px;
-  transition: color 0.3s, font-weight 0.3s, transform 0.3s;
+  transition: all var(--transition-speed);
+  font-size: 1.25rem;
 }

@@ -1,20 +1,46 @@
 .socialButton {
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
-    background-color: black;
-    color: yellow;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 10px;
+    margin: 8px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-    border: 2px solid yellow;
+    transition: all var(--transition-speed) ease;
+    border: 2px solid var(--primary-color);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 1.25rem;
+}
+
+.socialButton:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-color);
+    transform: translateY(100%);
+    transition: transform var(--transition-speed) ease;
+    z-index: -1;
 }
 
 .socialButton:hover {
-    background-color: yellow;
-    color: black;
-    transform: scale(1.1);
+    color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.socialButton:hover:before {
+    transform: translateY(0);
+}
+
+.socialButton:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
 }
