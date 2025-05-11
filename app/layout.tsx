@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/SKR_Logo_RGB_Yellow.webp",
-        width: 800,
+        width: 600,
         height: 600,
         alt: 'SKR Logo'
       }
