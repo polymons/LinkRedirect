@@ -93,12 +93,11 @@ const Home: React.FC = () => {
 					<FlagSwitcher />
 				</div>
 				<Link href="https://www.stopkillerrobots.org/" className="self-center mb-6 mt-2">
-					<Image
+					<img
 						src="/skr512.png"
 						alt="SKR Logo"
 						width={180}
 						height={180}
-						priority
 						className={styles.qrCode}
 					/>
 				</Link>
