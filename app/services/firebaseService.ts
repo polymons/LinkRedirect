@@ -1,4 +1,5 @@
 // services/firebaseService.ts
+"use client"; // Mark this file as a client component
 import { initializeApp } from "firebase/app";
 import { getFirestore, doc, updateDoc, increment, arrayUnion, collection } from "firebase/firestore";
 import { getAnalytics, isSupported, logEvent } from "firebase/analytics";
@@ -15,12 +16,16 @@ class FirebaseService {
       console.log("Initializing...");
       this.app = initializeApp(firebaseConfig);
       this.db = getFirestore(this.app);
-      isSupported().then((supported) => {
-        if (supported) {
-          this.analytics = getAnalytics(this.app);
-          console.log("Analytics initialized");
-        }
-      });
+      
+      // Only initialize analytics on the client side
+      if (typeof window !== 'undefined') {
+        isSupported().then((supported) => {
+          if (supported) {
+            this.analytics = getAnalytics(this.app);
+            console.log("Analytics initialized");
+          }
+        });
+      }
     }
 
   logClickEvent(id: string) {
