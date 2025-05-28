@@ -6,6 +6,7 @@ import firebaseService from "./services/firebaseService";
 import { useLanguage } from "./contexts/LanguageContext";
 import styles from "./styles/Home.module.css";
 import SocialMediaButton from "./components/SocialMediaButton";
+import Head from "next/head";
 
 const linkRedirectLinks: {
 	name: { en: string; hu: string };
@@ -80,12 +81,17 @@ const Home: React.FC = () => {
 	const { language } = useLanguage();
 	return (
 		<>
+			<Head>
+				<title>Stop Killer Robots Campaign</title>
+				<meta name="description" content="Join the Stop Killer Robots campaign to prevent the development and deployment of autonomous weapons. Learn about AI, warfare, robots, and the future of conflict." />
+				<meta name="keywords" content="Stop Killer Robots, autonomous weapons, AI, warfare, robots, artificial intelligence, lethal autonomous weapons, LAWS, campaign, activism, disarmament" />
+			</Head>
 			<main className="flex flex-col items-center min-h-screen p-0 pb-12 w-full box-border overflow-x-hidden">
 				<div className={styles.container}>
-					<Link href="https://www.stopkillerrobots.org/" className="self-center mb-6">
+					<Link href="https://www.stopkillerrobots.org/" className="self-center mb-6" aria-label="Navigate to Stop Killer Robots main page">
 						<img
 							src="/skr512.png"
-							alt="SKR Logo"
+							alt="Stop Killer Robots Campaign Logo"
 							width={180}
 							height={180}
 							className={styles.qrCode}

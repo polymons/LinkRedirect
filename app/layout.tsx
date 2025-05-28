@@ -21,7 +21,7 @@ export const metadata: Metadata = {
       type: "image/x-icon",
     }
   ],
-  keywords: ["link", "redirect", "page", "simple", "skr"],
+  keywords: ["autonomous", "autonomous weapon systems", "robot warfare", "ai robots", "skr"],
   authors: [{ name: "polymons" }],
   robots: {
     index: true,
